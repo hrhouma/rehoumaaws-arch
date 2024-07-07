@@ -2,9 +2,6 @@
 
 ## 1. SLA : Qu'est-ce que c'est ? (Disponibilité)
 
-### Introduction
-Un SLA (Service Level Agreement), ou Accord de Niveau de Service en français, est une promesse entre un fournisseur de service et un client, définissant le niveau de service attendu. Un SLA de 99.99999999999% (11 neuf) indique que le service promet d'être opérationnel et disponible 99.99999999999% du temps, ce qui équivaut à une potentielle indisponibilité d'environ 0.003 secondes par an. Bien que ce niveau de disponibilité exceptionnellement élevé minimise les risques d'interruptions et garantit une fiabilité presque totale, il est également associé à des coûts et une complexité technique importants pour le fournisseur du service. Les entreprises s'appuient sur des SLA robustes pour assurer la continuité de leurs opérations numériques, tout en veillant à équilibrer les coûts et les bénéfices.
-
 ### SLA : Qu'est-ce que c'est ?
 SLA signifie "Service Level Agreement" ou "Accord de Niveau de Service" en français. C'est fondamentalement une promesse entre un fournisseur de service et un client, indiquant le niveau de service que le client peut attendre.
 
@@ -12,7 +9,7 @@ SLA signifie "Service Level Agreement" ou "Accord de Niveau de Service" en fran�
 Lorsqu'un fournisseur de services promet un SLA de 99.99999999999%, cela signifie qu'il assure que ses services seront disponibles et opérationnels 99.99999999999% du temps sur une période déterminée (par exemple, une année).
 
 Pour mettre cela en perspective, si nous prenons une année entière (soit 31 536 000 secondes) et si le service n'est pas disponible seulement 0.00000000001% du temps, cela se traduit mathématiquement par :
-\[ 31 536 000 \text{ secondes/année} \times \frac{0.00000000001}{100} \text{ indisponibilité} = 0.0031536 \text{ secondes/année} \]
+$ 31 536 000 \text{ secondes/année} \times \frac{0.00000000001}{100} \text{ indisponibilité} = 0.0031536 \text{ secondes/année} $
 Cela signifie qu'avec un SLA de 99.99999999999%, le service promet d'être indisponible au maximum pendant environ 0.003 secondes par an.
 
 ### Pourquoi est-ce important ?
@@ -41,8 +38,12 @@ Imaginons un service de stockage de données dans le cloud, un peu comme Amazon 
 | 99.9999999999%  | 11                   | 0.00315 secondes         | 0.000259 secondes         | 0.0000605 secondes           | 0.00000864 secondes         |
 | 99.99999999999% | 12                   | 0.000315 secondes        | 0.0000259 secondes        | 0.00000605 secondes          | 0.000000864 secondes        |
 
-### Conclusion
-Garantir un SLA avec un aussi haut niveau de disponibilité est complexe et coûteux, et il faut toujours peser le coût par rapport au bénéfice. En général, les exigences du SLA devraient être alignées avec les besoins réels de l'entreprise et le niveau de tolérance au risque.
+
+
+# CONCLUSION
+- Un SLA (Service Level Agreement), ou Accord de Niveau de Service en français, est une promesse entre un fournisseur de service et un client, définissant le niveau de service attendu. Un SLA de 99.99999999999% (11 neuf) indique que le service promet d'être opérationnel et disponible 99.99999999999% du temps, ce qui équivaut à une potentielle indisponibilité d'environ 0.003 secondes par an.
+- Bien que ce niveau de disponibilité exceptionnellement élevé minimise les risques d'interruptions et garantit une fiabilité presque totale, il est également associé à des coûts et une complexité technique importants pour le fournisseur du service. Les entreprises s'appuient sur des SLA robustes pour assurer la continuité de leurs opérations numériques, tout en veillant à équilibrer les coûts et les bénéfices.
+- Garantir un SLA avec un aussi haut niveau de disponibilité est complexe et coûteux, et il faut toujours peser le coût par rapport au bénéfice. En général, les exigences du SLA devraient être alignées avec les besoins réels de l'entreprise et le niveau de tolérance au risque.
 
 ## 2. Durabilité
 
