@@ -9,7 +9,11 @@ SLA signifie "Service Level Agreement" ou "Accord de Niveau de Service" en fran�
 Lorsqu'un fournisseur de services promet un SLA de 99.99999999999%, cela signifie qu'il assure que ses services seront disponibles et opérationnels 99.99999999999% du temps sur une période déterminée (par exemple, une année).
 
 Pour mettre cela en perspective, si nous prenons une année entière (soit 31 536 000 secondes) et si le service n'est pas disponible seulement 0.00000000001% du temps, cela se traduit mathématiquement par :
-$$ 31 536 000 \text{ secondes/année} \times \frac{0.00000000001}{100} \text{ indisponibilité} = 0.0031536 \text{ secondes/année} $$
+
+$$
+31 536 000 \text{ secondes} \times \frac{0.00000000001}{100} = 0.0031536 \text{ secondes}
+$$
+
 Cela signifie qu'avec un SLA de 99.99999999999%, le service promet d'être indisponible au maximum pendant environ 0.003 secondes par an.
 
 ### Pourquoi est-ce important ?
