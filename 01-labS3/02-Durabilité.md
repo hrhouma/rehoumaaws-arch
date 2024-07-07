@@ -7,6 +7,13 @@ La durabilité dans le contexte des services de stockage en nuage comme Amazon S
 ### Durabilité
 
 La durabilité est généralement mesurée en termes de probabilité annuelle de perte d'un objet. Amazon S3, par exemple, annonce une durabilité de **99.999999999%** (11 nines) pour les objets stockés. Cela signifie que, en théorie, il est extrêmement improbable qu'un objet soit perdu.
+Pour calculer la différence entre 100% et 99.999999999% (11 nines), vous pouvez simplement soustraire ces deux pourcentages.
+
+   - 100% = 1
+   - 99.999999999% = 0.99999999999
+   - 1 - 0.99999999999 = 0.00000000001
+
+Donc, la différence entre 100% et 99.999999999% (11 nines) est 0.000000001% pour perdre un objet
 
 ### Probabilité de perdre un objet
 
