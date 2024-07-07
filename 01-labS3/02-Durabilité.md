@@ -93,4 +93,4 @@ Ce qui signifie qu'en moyenne, il faudrait environ 100 ans pour s'attendre à pe
 # 4 - Conclusion
 Même avec une très haute durabilité, il existe toujours une petite probabilité de perte de données. C'est pourquoi les systèmes de sauvegarde et les stratégies de récupération après incident sont cruciaux même dans les systèmes avec une durabilité très élevée. L'équilibre entre disponibilité, durabilité et coût doit être ajusté en fonction des besoins spécifiques et des exigences de votre application ou entreprise. Chaque ajout de "neuf" dans vos objectifs de durabilité ou de disponibilité peut augmenter considérablement la complexité et le coût de la solution de stockage.
 
-[Retour en haut](#readme---sla-et-durabilit%C3%A9)
+[Retour en haut](#-Durabilité)
