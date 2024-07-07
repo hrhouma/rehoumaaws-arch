@@ -25,9 +25,10 @@ $$
 $$
 
 4. **Calcul de la perte annuelle d'un objet :**
-   \[
+
+$$
    31 536 000 \text{ secondes/année} \times \frac{0.00000000001}{100} \text{ indisponibilité} = 0.0031536 \text{ secondes/année}
-   \]
+$$
 
 Cela signifie que la probabilité de perdre un objet stocké dans Amazon S3 est extrêmement faible, et que sur une année entière, la perte d'un objet peut théoriquement se produire pendant une durée négligeable de **0.0031536 secondes**.
 
