@@ -19,9 +19,10 @@ $$
 $$
 
 3. **Probabilité d'indisponibilité ou de perte d'un objet :**
-   \[
+
+$$
    0.00000000001 \text{ ou } 10^{-11} \text{ (soit 0.000000001% du temps)}
-   \]
+$$
 
 4. **Calcul de la perte annuelle d'un objet :**
    \[
