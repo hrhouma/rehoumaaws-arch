@@ -13,16 +13,17 @@ La durabilité est généralement mesurée en termes de probabilité annuelle de
 La durabilité de **99.999999999%** (11 nines) signifie qu'il y a une probabilité très faible qu'un objet soit perdu au cours d'une année. Pour mettre cela en perspective :
 
 1. **Nombre total de secondes dans une année :**
-   \[
+   
+$$
    31 536 000 \text{ secondes}
-   \]
+$$
 
-2. **Probabilité d'indisponibilité ou de perte d'un objet :**
+3. **Probabilité d'indisponibilité ou de perte d'un objet :**
    \[
    0.00000000001 \text{ ou } 10^{-11} \text{ (soit 0.000000001% du temps)}
    \]
 
-3. **Calcul de la perte annuelle d'un objet :**
+4. **Calcul de la perte annuelle d'un objet :**
    \[
    31 536 000 \text{ secondes/année} \times \frac{0.00000000001}{100} \text{ indisponibilité} = 0.0031536 \text{ secondes/année}
    \]
