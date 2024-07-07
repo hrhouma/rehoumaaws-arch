@@ -61,6 +61,7 @@ Supposons qu'une entreprise utilise ce service de stockage et qu'elle stocke 1 m
 $$
 1 000 000 000 \text{ objets} \times 0.000000001% \text{ probabilité de perte par objet} = 0.01 \text{ objet perdu par an} 
 $$
+
 Ce qui signifie qu'en moyenne, il faudrait environ 100 ans pour s'attendre à perdre un seul objet, sur la base de cette probabilité.
 
 # 3 -  Disponibilité vs Durabilité
