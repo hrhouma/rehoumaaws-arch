@@ -45,7 +45,6 @@ Voici un exemple de politique de bucket S3 qui autorise l'accès en lecture (`s3
 
 ## Conclusion
 Les politiques de bucket S3 sont essentielles pour contrôler l'accès à vos données stockées sur Amazon S3. En personnalisant vos politiques de bucket, vous pouvez vous assurer que vos données sont sécurisées et accessibles uniquement aux utilisateurs autorisés.
-```
 
 ### Explication de la politique dans le code
 - **Effect: "Allow"** : Cette directive permet d'autoriser les actions spécifiées, contrairement à "Deny" qui les refuserait.
