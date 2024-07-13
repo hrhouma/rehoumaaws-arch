@@ -1,4 +1,4 @@
-# Comprendre les Classes de Stockage Amazon S3
+# Partie (05/10) - Comprendre les Classes de Stockage Amazon S3 : Optimiser la Gestion des Données Cloud
 
 #### Introduction : Le Défi du Stockage des Données
 
