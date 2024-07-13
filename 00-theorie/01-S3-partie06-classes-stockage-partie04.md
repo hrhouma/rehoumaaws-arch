@@ -1,4 +1,5 @@
-# Amazon Web Services (AWS) S3 Storage Classes
+# Partie (06/10) - Comprendre les Classes de Stockage Amazon S3 : Optimiser la Gestion des Données Cloud
+
 # Références: 
 - https://medium.com/analytics-vidhya/amazon-s3-storage-classes-d77de43df23d
 
