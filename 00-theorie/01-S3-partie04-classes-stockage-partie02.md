@@ -1,5 +1,4 @@
-
-## Comprendre les Classes de Stockage Amazon S3 : Optimiser la Gestion des Données Cloud
+# Partie (04/10) - Comprendre les Classes de Stockage Amazon S3 : Optimiser la Gestion des Données Cloud
 
 
 ![1693393916325](https://github.com/user-attachments/assets/47f8b861-5022-4da2-be68-2bcb8940d00c)
