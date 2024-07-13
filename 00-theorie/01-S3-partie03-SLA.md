@@ -1,4 +1,4 @@
-# 01-S3-partie03-SLA
+# 01-S3-partie01-SLA
 
 # 1 - SLA : Qu'est-ce que c'est ? (Disponibilité)
 SLA signifie "Service Level Agreement" ou "Accord de Niveau de Service" en français. C'est fondamentalement une promesse entre un fournisseur de service et un client, indiquant le niveau de service que le client peut attendre.
