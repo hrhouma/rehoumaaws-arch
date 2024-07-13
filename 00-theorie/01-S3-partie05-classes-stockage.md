@@ -68,4 +68,6 @@ Les classes de stockage Amazon S3 offrent une boîte à outils complète pour re
 | **S3 Glacier**                      | -                                                | Archivage et rétention de données à long terme                    | $0.004/Go            | Minutes ou heures | ≥ 3 AZ                                              | Frais de récupération par Go, durée minimale de stockage  |
 | **S3 Glacier Deep Archive**         | -                                                | Archivage à très long terme                                       | $0.00099/Go          | Heures           | ≥ 3 AZ                                              | Frais de récupération par Go, durée minimale de stockage  |
 
-Les images fournies peuvent être utilisées pour illustrer visuellement ces différences et faciliter la compréhension des étudiants.
+
+![1693393916325](https://github.com/user-attachments/assets/47f8b861-5022-4da2-be68-2bcb8940d00c)
+![image](https://github.com/user-attachments/assets/24c9056e-561e-4a4f-ac68-4f9a88b94f53)
