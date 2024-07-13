@@ -1,15 +1,13 @@
 
 ## Comprendre les Classes de Stockage Amazon S3 : Optimiser la Gestion des Données Cloud
 
-**Ajit Pisal**
 
-**Ajit Pisal**
+![1693393916325](https://github.com/user-attachments/assets/47f8b861-5022-4da2-be68-2bcb8940d00c)
+![image](https://github.com/user-attachments/assets/24c9056e-561e-4a4f-ac68-4f9a88b94f53)
 
-**Ajit Pisal**
-
-**VENTES || DÉVELOPPEMENT COMMERCIAL || INGÉNIEUR EN IRRIGATION || PASSIONNÉ DE CLOUD || AWS || AZURE**
-
-**Publié le 30 août 2023**
+# Références :
+- https://www.linkedin.com/pulse/understanding-amazon-s3-storage-classes-making-most-cloud-ajit-pisal
+- https://medium.com/@msghodekar/understanding-the-different-storage-types-in-amazon-s3-383d62800700
 
 ### Introduction : Le Défi du Stockage des Données
 
@@ -35,13 +33,4 @@ Les classes de stockage Amazon S3 permettent aux organisations de trouver un éq
 Les classes de stockage Amazon S3 offrent une boîte à outils complète pour relever divers défis de stockage des données. En alignant les classes de stockage avec les caractéristiques uniques de vos données et vos schémas d'accès, vous pouvez élaborer une stratégie de stockage qui améliore les performances, réduit les coûts et s'aligne sur les objectifs plus larges de votre organisation. À mesure que le paysage du cloud continue d'évoluer, maîtriser les subtilités des classes de stockage S3 est une compétence précieuse pour tout professionnel du cloud.
 
 
-![image](https://github.com/user-attachments/assets/af25097c-a7cd-4faa-a6b2-a6b5c38f573e)
 
-
-![1693393916325](https://github.com/user-attachments/assets/47f8b861-5022-4da2-be68-2bcb8940d00c)
-
-![image](https://github.com/user-attachments/assets/24c9056e-561e-4a4f-ac68-4f9a88b94f53)
-
-https://www.linkedin.com/pulse/understanding-amazon-s3-storage-classes-making-most-cloud-ajit-pisal
-
-https://medium.com/@msghodekar/understanding-the-different-storage-types-in-amazon-s3-383d62800700
