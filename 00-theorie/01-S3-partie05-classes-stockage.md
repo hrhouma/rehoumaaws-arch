@@ -1,6 +1,4 @@
-
-
-### Comprendre les Classes de Stockage Amazon S3
+# Comprendre les Classes de Stockage Amazon S3
 
 #### Introduction : Le Défi du Stockage des Données
 
