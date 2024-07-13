@@ -1,12 +1,14 @@
 # Partie (04/10) - Comprendre les Classes de Stockage Amazon S3 : Optimiser la Gestion des Données Cloud
 
-
-![1693393916325](https://github.com/user-attachments/assets/47f8b861-5022-4da2-be68-2bcb8940d00c)
-![image](https://github.com/user-attachments/assets/24c9056e-561e-4a4f-ac68-4f9a88b94f53)
-
 # Références :
 - https://www.linkedin.com/pulse/understanding-amazon-s3-storage-classes-making-most-cloud-ajit-pisal
 - https://medium.com/@msghodekar/understanding-the-different-storage-types-in-amazon-s3-383d62800700
+- https://medium.com/analytics-vidhya/amazon-s3-storage-classes-d77de43df23d
+  
+![1693393916325](https://github.com/user-attachments/assets/47f8b861-5022-4da2-be68-2bcb8940d00c)
+![image](https://github.com/user-attachments/assets/24c9056e-561e-4a4f-ac68-4f9a88b94f53)
+
+
 
 ### Introduction : Le Défi du Stockage des Données
 
