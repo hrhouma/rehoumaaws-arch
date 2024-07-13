@@ -1,5 +1,4 @@
-# Partie (03/10) - SLA
-## Cours sur S3 et les classes de stockage Amazon S3
+# Partie (03/10) - S3 et les classes de stockage Amazon S3
 
 ### Table des matières
 1. Introduction à Amazon S3
