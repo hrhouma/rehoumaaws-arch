@@ -4,7 +4,7 @@
 - https://www.linkedin.com/pulse/understanding-amazon-s3-storage-classes-making-most-cloud-ajit-pisal
 - https://medium.com/@msghodekar/understanding-the-different-storage-types-in-amazon-s3-383d62800700
 - https://medium.com/analytics-vidhya/amazon-s3-storage-classes-d77de43df23d
-- 
+  
 ### Table des matières
 1. Introduction à Amazon S3
 2. Les classes de stockage S3
