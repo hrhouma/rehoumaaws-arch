@@ -678,6 +678,7 @@ CREATE TABLE order_item (
 ```
 
 ```sql
+sudo mysql -u admin -p
 select * from `product`;
 ```
 ![image](https://github.com/user-attachments/assets/d077a7b8-71cd-4b17-8600-1176ae986a46)
