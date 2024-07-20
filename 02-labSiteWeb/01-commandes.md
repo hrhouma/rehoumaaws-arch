@@ -677,6 +677,12 @@ CREATE TABLE order_item (
   );
 ```
 
+```sql
+select * from `product`;
+```
+![image](https://github.com/user-attachments/assets/d077a7b8-71cd-4b17-8600-1176ae986a46)
+
+
 ## Notes
 
 - Les fichiers SQL doivent être placés dans un répertoire `sql` situé dans le même répertoire que les scripts `.sh`.
