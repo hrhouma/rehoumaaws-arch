@@ -3,13 +3,13 @@
 ```sh
 sudo yum update -y
 cat /proc/version
-sudo yum install -y httpd mysql-server php
+sudo yum install -y httpd mariadb-server php
 sudo systemctl enable httpd
 sudo systemctl start httpd
 sudo systemctl status httpd
-sudo systemctl enable mysqld
-sudo systemctl start mysqld
-sudo systemctl status mysqld
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+sudo systemctl status mariadb
 sudo httpd -v
 mysql --version
 php --version
