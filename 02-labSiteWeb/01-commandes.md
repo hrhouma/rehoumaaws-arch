@@ -567,13 +567,25 @@ echo
 --
 -- Creates a root user that can connect from any host and sets the password for all root users in MariaDB
 --
+--
+-- Creates a root user that can connect from any host and sets the password for all root users in MariaDB
+--
 USE mysql;
+
+DROP USER IF EXISTS 'root'@'%';
 DROP USER IF EXISTS 'admin'@'%';
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'Re:Start!9';
 CREATE USER 'admin'@'%' IDENTIFIED BY 'Re:Start!9';
-GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
 
 ALTER USER 'root'@'%' IDENTIFIED BY 'Re:Start!9';
+ALTER USER 'admin'@'%' IDENTIFIED BY 'Re:Start!9';
+
+
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+
+
 FLUSH PRIVILEGES;
 ```
 
