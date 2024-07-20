@@ -105,6 +105,8 @@ sudo systemctl restart httpd
 ### Tâche 3 : Création d'une page web de test simple
 
 ```sh
+sudo chown ec2-user:ec2-user /var/www/html
+sudo rm -rf /var/www/html/*
 echo "<html>Hello from the café web server!</html>" > /var/www/html/index.html
 ```
 
@@ -161,7 +163,7 @@ ssh -i ~/.ssh/id_rsa ec2-user@<public-ip-of-ProdCafeServer>
 ```
 
 
-# Annexe 1
+# Annexe 1 : Explication de quelques commandes
 
 ### 1. `sudo ln -s /var/www/ /home/ec2-user/environment`
 
@@ -185,3 +187,76 @@ En résumé :
 
 - La première commande crée un lien symbolique pour accéder facilement au répertoire `/var/www/` à partir de l'environnement de l'utilisateur `ec2-user`.
 - La deuxième commande change les permissions de façon à ce que l'utilisateur `ec2-user` puisse contrôler le répertoire `/var/www/html`.
+
+# Annexe 2 :
+
+```sh
+nano script1.sh
+chmod +x script1.sh
+./script1.sh
+```
+
+```sh
+#!/bin/bash
+
+# Mise à jour du système
+sudo yum update -y
+
+# Vérification de la version du noyau
+cat /proc/version
+
+# Installation de la pile LAMP
+sudo yum install -y httpd mariadb-server php git
+
+# Configuration et démarrage d'Apache
+sudo systemctl enable httpd
+sudo systemctl start httpd
+sudo systemctl status httpd
+
+# Configuration et démarrage de MariaDB
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+sudo systemctl status mariadb
+
+# Vérification des versions des services installés
+sudo httpd -v
+sudo mysql --version
+sudo php --version
+
+# Création d'un lien symbolique vers le répertoire web et modification des permissions
+sudo ln -s /var/www/ /home/ec2-user/environment
+sudo chown ec2-user:ec2-user /var/www/html
+
+# Ajout d'une page de test
+echo '<html>Hello from the café web server!</html>' | sudo tee /var/www/html/index.html
+
+# Téléchargement et déploiement du dépôt GitHub
+cd /var/www/html
+sudo rm -rf /var/www/html/*
+sudo git clone https://github.com/andrewtch88/mvc-ecommerce.git
+sudo mv mvc-ecommerce/* .
+sudo rm -rf mvc-ecommerce
+sudo chown ec2-user:ec2-user /var/www/html
+sudo chmod -R 755 /var/www/html
+sudo systemctl restart httpd
+
+# Ajout de nouveau la page de test simple
+sudo rm -rf /var/www/html/*
+echo '<html>Hello from the café web server!</html>' | sudo tee /var/www/html/index.html
+
+# Création de dossiers pour les nouveaux sites web
+sudo mkdir /var/www/html/netflix /var/www/html/vcard
+
+# Téléchargement des nouveaux dépôts GitHub
+sudo git clone https://github.com/pro-prodipto/Netflix-Website-Project.git /var/www/html/netflix
+sudo git clone https://github.com/codewithsadee/vcard-personal-portfolio.git /var/www/html/vcard
+
+# Modification des permissions
+sudo chown -R ec2-user:ec2-user /var/www/html/netflix /var/www/html/vcard
+sudo chmod -R 755 /var/www/html/netflix /var/www/html/vcard
+
+# Redémarrage d'Apache pour appliquer les changements
+sudo systemctl restart httpd
+```
+
+Ce script exécute les étapes de mise à jour du système, d'installation des composants LAMP, de configuration et démarrage des services, de téléchargement et déploiement des sites web à partir de dépôts GitHub, et de modification des permissions nécessaires.
