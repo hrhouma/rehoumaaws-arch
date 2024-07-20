@@ -570,9 +570,7 @@ echo
 USE mysql;
 DROP USER IF EXISTS 'admin'@'%';
 CREATE USER 'admin'@'%' IDENTIFIED BY 'Re:Start!9';
-GRANT ALL PRIVILEGES
-
- ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
 
 ALTER USER 'root'@'%' IDENTIFIED BY 'Re:Start!9';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
