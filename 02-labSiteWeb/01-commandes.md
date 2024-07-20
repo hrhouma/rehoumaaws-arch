@@ -679,6 +679,11 @@ CREATE TABLE order_item (
 
 ```sql
 sudo mysql -u admin -p
+sudo mysql -u root -p
+```
+### Mot de passe (Re:Start!9)
+
+```sql
 select * from `product`;
 ```
 ![image](https://github.com/user-attachments/assets/d077a7b8-71cd-4b17-8600-1176ae986a46)
