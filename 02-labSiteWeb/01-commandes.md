@@ -49,6 +49,7 @@ echo '<html>Hello from the café web server!</html>' > /var/www/html/index.html
 sudo yum install -y git
 cd /var/www/html
 sudo rm -rf index.html
+sudo rm -rf /var/www/html/*
 sudo git clone https://github.com/andrewtch88/mvc-ecommerce.git
 
 
@@ -63,7 +64,9 @@ sudo systemctl restart httpd
 
 # Donner les permissions appropriées
 # sudo chown -R apache:apache /var/www/html
-# sudo chmod -R 755 /var/www/html
+# apache ne fonctionne pas , mais plutôt ec2-user
+sudo chown ec2-user:ec2-user /var/www/html
+sudo chmod -R 755 /var/www/html
 
 # Redémarrer Apache pour appliquer les changements
 sudo systemctl restart httpd
@@ -88,12 +91,15 @@ sudo git clone https://github.com/codewithsadee/vcard-personal-portfolio.git /va
 # Donner les permissions appropriées
 sudo chown -R apache:apache /var/www/html/netflix
 sudo chown -R apache:apache /var/www/html/vcard
+sudo chown -R ec2-user:ec2-user /var/www/html/netflix
+sudo chown -R ec2-user:ec2-user /var/www/html/vcard
 sudo chmod -R 755 /var/www/html/netflix
 sudo chmod -R 755 /var/www/html/vcard
 
 # Redémarrer Apache pour appliquer les changements
 sudo systemctl restart httpd
 
+# TESTEZ @IP publique - TEST 4
 ```
 
 ### Tâche 3 : Création d'une page web de test simple
