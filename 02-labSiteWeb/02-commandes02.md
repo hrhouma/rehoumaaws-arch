@@ -112,10 +112,7 @@ sh 2-setup_database.sh
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 
-
-
-
-### Mise à jour du script `2-setup_database.sh`
+# `2-setup_database.sh`
 
 ```bash
 #!/bin/bash
@@ -285,74 +282,11 @@ En suivant ces étapes, le script de création de la base de données devrait s'
 
 
 
-### `main_setup.sh`
-
-```bash
-#!/bin/bash
-
-# Appel du script de configuration du serveur web
-./1-setup_web_server.sh
-
-# Appel du script de configuration de la base de données
-./2-setup_database.sh
-
-# Pause finale pour tester les projets
-echo "Ajout d'une pause pour tester les projets ==> Adresse IP publique"
-echo "Testez et ensuite, appuyez sur une touche pour terminer..."
-read -n 1 -s -r -p " "
-echo "Fin du script principal."
-
-# Fin du script principal
-echo "Script principal terminé."
-```
-
-### `cleanup.sh`
-
-```bash
-#!/bin/bash
-
-# Supprimer les répertoires et fichiers créés
-sudo rm -rf /var/www/html/*
-sudo rm -rf ~/environment/setup.tar.gz ~/environment/db.tar.gz ~/environment/cafe.tar.gz
-sudo rm -rf ~/environment/setup ~/environment/db ~/environment/cafe
-
-# Supprimer les bases de données MariaDB
-sudo mysql -u root -p'Re:Start!9' -e "DROP DATABASE IF EXISTS cafe_db;"
-sudo mysql -u root -p'Re:Start!9' -e "DROP USER IF EXISTS 'root'@'%';"
-sudo mysql -u root -p'Re:Start!9' -e "DROP USER IF EXISTS 'admin'@'%';"
-
-# Arrêter les services
-sudo systemctl stop httpd
-sudo systemctl stop mariadb
-
-# Démarrer les services pour vérifier que tout a été supprimé
-sudo systemctl start httpd
-sudo systemctl start mariadb
-
-# Message de fin
-echo "Nettoyage terminé. Vous pouvez maintenant réexécuter les scripts."
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ---------------
 
-### Mise à jour du script `main_setup.sh` pour inclure le nouvel appel
+#  `main_setup.sh` 
 
 ```bash
 #!/bin/bash
@@ -376,8 +310,7 @@ echo "Script principal terminé."
 
 --------------
 
-
-### Script de nettoyage : `cleanup.sh`
+# Script de nettoyage : `cleanup.sh`
 
 ```bash
 #!/bin/bash
@@ -402,43 +335,4 @@ sudo systemctl start mariadb
 
 # Message de fin
 echo "Nettoyage terminé. Vous pouvez maintenant réexécuter les scripts."
-```
-
-### Exécution du script de nettoyage
-
-1. Enregistrez le script ci-dessus dans un fichier nommé `cleanup.sh`.
-2. Rendez le script exécutable et lancez-le :
-
-```bash
-chmod +x cleanup.sh
-./cleanup.sh
-```
-
-### Réexécution des scripts de configuration
-
-Après avoir nettoyé votre environnement, vous pouvez réexécuter les scripts de configuration :
-
-```bash
-chmod +x 1-setup_web_server.sh
-chmod +x 2-setup_database.sh
-./main_setup.sh
-```
-
----
-
-```bash
-sudo mysql -u root -p'Re:Start!9' <<EOF
-DROP DATABASE IF EXISTS cafe_db;
-CREATE DATABASE cafe_db;
-USE cafe_db;
-
-CREATE TABLE orders (
-  `order_number` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `order_date_time` DATETIME NOT NULL,
-  -- other columns
-);
-
--- Add other SQL commands here
-
-EOF
 ```
