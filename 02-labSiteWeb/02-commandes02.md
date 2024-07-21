@@ -340,3 +340,20 @@ chmod +x 2-setup_database.sh
 ./main_setup.sh
 ```
 
+---
+
+sudo mysql -u root -p'Re:Start!9' <<EOF
+DROP DATABASE IF EXISTS cafe_db;
+CREATE DATABASE cafe_db;
+USE cafe_db;
+
+CREATE TABLE orders (
+  `order_number` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `order_date_time` DATETIME NOT NULL,
+  -- other columns
+);
+
+-- Add other SQL commands here
+
+EOF
+
