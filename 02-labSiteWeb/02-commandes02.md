@@ -342,6 +342,7 @@ chmod +x 2-setup_database.sh
 
 ---
 
+```bash
 sudo mysql -u root -p'Re:Start!9' <<EOF
 DROP DATABASE IF EXISTS cafe_db;
 CREATE DATABASE cafe_db;
@@ -356,4 +357,4 @@ CREATE TABLE orders (
 -- Add other SQL commands here
 
 EOF
-
+```
