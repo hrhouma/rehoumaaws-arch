@@ -3,8 +3,11 @@ nano 1-setup_web_server.sh
 chmod +x 1-setup_web_server.sh
 sh 1-setup_web_server.sh
 ```
+-------
 
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 ### Contenu de `1-setup_web_server.sh`
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 ```bash
 #!/bin/bash
@@ -96,6 +99,194 @@ echo "Fin du script."
 echo "Script terminé."
 ```
 
+----
+
+```bash
+nano 2-setup_database.sh
+chmod +x 2-setup_database.sh
+sh 2-setup_database.sh
+```
+
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+### Contenu de `2-setup_database.sh`
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+
+```bash
+#!/bin/bash
+
+# Naviguer vers le répertoire de l'environnement
+cd ~/environment
+
+# Télécharger et extraire les fichiers nécessaires
+wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/ILT-TF-200-ACACAD-20-EN/mod4-challenge/setup.tar.gz
+tar -zxvf setup.tar.gz
+
+wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/ILT-TF-200-ACACAD-20-EN/mod4-challenge/db.tar.gz
+tar -zxvf db.tar.gz
+
+wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/ILT-TF-200-ACACAD-20-EN/mod4-challenge/cafe.tar.gz
+tar -zxvf cafe.tar.gz 
+
+# Déplacer les fichiers extraits vers le répertoire web
+sudo mv cafe /var/www/html/
+cd setup
+chmod +x set-app-parameters.sh
+
+# Remplacer les scripts existants avec les nouveaux contenus
+echo "
+#!/bin/bash
+#
+# Script to set the MariaDB root user password right after database installation.
+# and create an admin user.
+#
+# Check the set-root-password.log file after running it to verify successful execution.
+#
+
+sudo mysql --verbose < sql/set-root-password.sql > set-root-password.log
+
+echo
+echo \"Set Root Password script completed.\"
+echo \"Please check the set-root-password.log file to verify successful execution.\"
+echo
+" > ../db/set-root-password.sh
+
+echo "
+--
+-- Creates a root user that can connect from any host and sets the password for all root users in MariaDB
+--
+USE mysql;
+
+DROP USER IF EXISTS 'root'@'%';
+DROP USER IF EXISTS 'admin'@'%';
+
+CREATE USER 'root'@'%' IDENTIFIED BY 'Re:Start!9';
+CREATE USER 'admin'@'%' IDENTIFIED BY 'Re:Start!9';
+
+ALTER USER 'root'@'%' IDENTIFIED BY 'Re:Start!9';
+ALTER USER 'admin'@'%' IDENTIFIED BY 'Re:Start!9';
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+" > ../db/sql/set-root-password.sql
+
+echo "
+#!/bin/bash
+#
+# Script to create and populate the cafe database.
+# Check the create-db.log file after running it to verify successful execution.
+#
+sudo mysql --user=admin --password=\"Re:Start!9\" --verbose < sql/create-db.sql > create-db.log
+
+echo
+echo \"Create Database script completed.\"
+echo \"Please check the create-db.log file to verify successful execution.\"
+echo
+" > ../db/create-db.sh
+
+echo "
+/*
+Database Creation Script for the cafe database
+*/
+DROP DATABASE IF EXISTS cafe_db;
+
+CREATE DATABASE cafe_db;
+
+USE cafe_db;
+
+/* Create PRODUCT_GROUP table. */
+
+CREATE TABLE product_group (
+  product_group_number INT(3) NOT NULL PRIMARY KEY,
+  product_group_name VARCHAR(25) NOT NULL DEFAULT ''
+  );
+
+/* INSERT initialization data into the PRODUCT_GROUP table. */
+
+INSERT INTO product_group (product_group_number, product_group_name) VALUES
+ (1, 'Pastries')
+, (2, 'Drinks');
+
+/* Create PRODUCT table. */
+
+CREATE TABLE product (
+  id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  product_name VARCHAR(40) NOT NULL DEFAULT '',
+  description VARCHAR(200) NOT NULL DEFAULT '',
+  price DECIMAL(10,2) NOT NULL DEFAULT 0.0,
+  product_group INT(2) NOT NULL DEFAULT 1,
+  image_url VARCHAR(256) DEFAULT 'images/default-image.jpg',
+  FOREIGN KEY (product_group) REFERENCES product_group (product_group_number)
+  );
+
+/* INSERT initialization data into the PRODUCT table. */
+
+INSERT INTO product (product_name, description, price, product_group, image_url) VALUES
+ ('Croissant', 'Fresh, buttery and fluffy... Simply delicious!', 1.50, 1, 'images/Croissants.jpg')
+, ('Donut', 'We have more than half-a-dozen flavors!', 1.00, 1, 'images/Donuts.jpg')
+, ('Chocolate Chip Cookie', 'Made with Swiss chocolate with a touch of Madagascar vanilla', 2.50, 1, 'images/Chocolate-Chip-Cookies.jpg')
+, ('Muffin', 'Banana bread, blueberry, cranberry or apple', 3.00, 1, 'images/Muffins.jpg')
+, ('Strawberry Blueberry Tart', 'Bursting with the taste and aroma of fresh fruit', 3.50, 1, 'images/Strawberry-Blueberry-Tarts.jpg')
+, ('Strawberry Tart', 'Made with fresh ripe strawberries and a delicious whipped cream', 3.50, 1, 'images/Strawberry-Tarts.jpg')
+, ('Coffee', 'Freshly-ground black or blended Columbian coffee', 3.00, 2, 'images/Coffee.jpg')
+, ('Hot Chocolate', 'Rich and creamy, and made with real chocolate', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg')
+, ('Latte', 'Offered hot or cold and in various delicious flavors', 3.50, 2, 'images/Latte.jpg');
+
+/* Create ORDER table. */
+
+CREATE TABLE `order` (
+  order_number INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  order_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  amount DECIMAL(10,2) NOT NULL DEFAULT 0.0
+  );
+
+/* Create ORDER_ITEM table. */
+
+CREATE TABLE order_item (
+  order_number INT(5) NOT NULL,
+  order_item_number INT(5) NOT NULL,
+  product_id INT(3),
+  quantity INT(2),
+  amount DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (order_number, order_item_number),
+  FOREIGN KEY (order_number) REFERENCES `order` (order_number),
+  FOREIGN KEY (product_id) REFERENCES product (id)
+  );
+" > ../db/sql/create-db.sql
+
+# Exécution des scripts de base de données
+cd ../db/
+sudo sh set-root-password.sh
+sudo sh create-db.sh
+
+# Fin du script
+echo "Script de configuration de la base de données terminé."
+```
+
+### Mise à jour du script `main_setup.sh` pour inclure le nouvel appel
+
+```bash
+#!/bin/bash
+
+# Appel du script de configuration du serveur web
+./1-setup_web_server.sh
+
+# Appel du script de configuration de la base de données
+./2-setup_database.sh
+
+# Pause finale pour tester les projets
+echo "Ajout d'une pause pour tester les projets ==> Adresse IP publique"
+echo "Testez et ensuite, Appuyez sur une touche pour terminer..."
+read -n 1 -s -r -p " "
+echo "Fin du script principal."
+
+# Fin du script principal
+echo "Script principal terminé."
+```
+
+
+----
 ### Script principal pour appeler `1-setup_web_server.sh`
 
 Créez un autre script, par exemple `main_setup.sh`, qui appellera le script `1-setup_web_server.sh`.
@@ -105,6 +296,7 @@ Créez un autre script, par exemple `main_setup.sh`, qui appellera le script `1-
 
 # Appel du script de configuration
 ./1-setup_web_server.sh
+./2-setup_database.sh
 ```
 
 Pour exécuter le script principal, rendez-le exécutable et lancez-le :
@@ -116,3 +308,5 @@ chmod +x main_setup.sh
 ```
 
 Ainsi, `main_setup.sh` appelle `1-setup_web_server.sh`, et à la fin de ce dernier, une pause est incluse pour vous permettre de tester les différents projets avant de terminer le script.
+
+Avec ces modifications, le script `main_setup.sh` va maintenant appeler le script `1-setup_web_server.sh` suivi de `2-setup_database.sh`, en automatisant tout le processus de configuration du serveur et de la base de données.
