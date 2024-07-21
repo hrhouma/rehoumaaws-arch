@@ -114,7 +114,6 @@ sh 2-setup_database.sh
 
 
 
-Merci pour les informations. Voici le script SQL corrigé et le script `2-setup_database.sh` mis à jour pour inclure les modifications nécessaires :
 
 ### Script SQL mis à jour (`create-db.sql`)
 
@@ -153,6 +152,10 @@ CREATE TABLE product (
   FOREIGN KEY (product_group) REFERENCES product_group (product_group_number)
   );
 
+/* Créer la table orders. */
+
+
+
 /* Insérer les données d'initialisation dans la table PRODUCT. */
 
 INSERT INTO product (product_name, description, price, product_group, image_url) VALUES 
@@ -166,27 +169,7 @@ INSERT INTO product (product_name, description, price, product_group, image_url)
  ('Chocolat chaud', 'Riche et crémeux, fait avec du vrai chocolat', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg'), 
  ('Latte', 'Proposé chaud ou froid et dans diverses saveurs délicieuses', 3.50, 2, 'images/Latte.jpg');
 
-/* Créer la table orders. */
 
-CREATE TABLE orders (
-  `order_number` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `order_date_time` DATETIME NOT NULL,
-  `customer_id` INT(5),
-  `amount` DECIMAL(10,2)
-  );
-
-/* Créer la table ORDER_ITEM. */
-
-CREATE TABLE order_item (
-  `order_number` INT(5) NOT NULL,
-  `order_item_number` INT(5) NOT NULL,
-  `product_id` INT(3),
-  `quantity` INT(2),
-  `amount` DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (`order_number`, `order_item_number`),
-  FOREIGN KEY (`order_number`) REFERENCES orders (`order_number`),
-  FOREIGN KEY (`product_id`) REFERENCES product (`id`)
-  );
 ```
 
 ### Mise à jour du script `2-setup_database.sh`
@@ -300,6 +283,26 @@ CREATE TABLE product (
   image_url VARCHAR(256) DEFAULT 'images/default-image.jpg',
   FOREIGN KEY (product_group) REFERENCES product_group (product_group_number)
   );
+CREATE TABLE orders (
+  order_number INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  order_date_time DATETIME NOT NULL,
+  customer_id INT(5),
+  amount DECIMAL(10,2)
+  );
+
+/* Créer la table ORDER_ITEM. */
+
+CREATE TABLE order_item (
+  order_number INT(5) NOT NULL,
+  order_item_number INT(5) NOT NULL,
+  product_id INT(3),
+  quantity INT(2),
+  amount DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (`order_number`, `order_item_number`),
+  FOREIGN KEY (`order_number`) REFERENCES orders (`order_number`),
+  FOREIGN KEY (`product_id`) REFERENCES product (`id`)
+  );
+
 
 /* Insérer les données d'initialisation dans la table PRODUCT. */
 
@@ -316,27 +319,7 @@ INSERT INTO product (product_name, description, price, product_group, image_url)
 Riche et crémeux, fait avec du vrai chocolat', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg'), 
  ('Latte', 'Proposé chaud ou froid et dans diverses saveurs délicieuses', 3.50, 2, 'images/Latte.jpg');
 
-/* Créer la table orders. */
 
-CREATE TABLE orders (
-  `order_number` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `order_date_time` DATETIME NOT NULL,
-  `customer_id` INT(5),
-  `amount` DECIMAL(10,2)
-  );
-
-/* Créer la table ORDER_ITEM. */
-
-CREATE TABLE order_item (
-  `order_number` INT(5) NOT NULL,
-  `order_item_number` INT(5) NOT NULL,
-  `product_id` INT(3),
-  `quantity` INT(2),
-  `amount` DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (`order_number`, `order_item_number`),
-  FOREIGN KEY (`order_number`) REFERENCES orders (`order_number`),
-  FOREIGN KEY (`product_id`) REFERENCES product (`id`)
-  );
 " > ../db/sql/create-db.sql
 
 # Exécution des scripts de base de données
