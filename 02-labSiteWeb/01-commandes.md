@@ -222,7 +222,9 @@ En résumé :
 - La première commande crée un lien symbolique pour accéder facilement au répertoire `/var/www/` à partir de l'environnement de l'utilisateur `ec2-user`.
 - La deuxième commande change les permissions de façon à ce que l'utilisateur `ec2-user` puisse contrôler le répertoire `/var/www/html`.
 
-# Annexe 2 :
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
+# Annexe 2 : Première partie , le tout en 1
+🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 ```sh
 nano script1.sh
@@ -297,7 +299,7 @@ Ce script exécute les étapes de mise à jour du système, d'installation des c
 
 ----
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
-# Annexe 2 
+# Annexe 3 - root et admin correction du lab
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 J'ai crée deux fichiers, un pour l'utilisateur root et un pour l'utilisateur admin.
@@ -358,9 +360,11 @@ Assurez-vous d'avoir MariaDB installé et accessible depuis la ligne de commande
 
    ```bash
    sudo mysql --user=root --password="Re:Start!9" --verbose < sql/create-db.sql
+   OU
+   sudo mysql --user=admin --password="Re:Start!9" --verbose < sql/create-db.sql
    ```
 
-### Contenu des Scripts
+# Contenu des Scripts
 
 #### set-root-password.sh
 
@@ -379,7 +383,7 @@ echo "Please check the set-root-password.log file to verify successful execution
 echo
 ```
 
-#### set-root-password.sql
+#### set-root-password.sql (*root et admin*)
 
 ```sql
 USE mysql;
@@ -720,7 +724,7 @@ chmod +x create-db.sh
 
 
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
-# Annexe 3 - Configuration MySQL sur Ubuntu
+# Annexe 4 - Configuration MySQL sur Ubuntu
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 ```bash
@@ -745,7 +749,7 @@ exit;
 sudo mysql -u root -p
 ```
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
-# Annexe 4 - Configuration MariaDB sur Amazon Linux 2023
+# Annexe 5 - Configuration MariaDB sur Amazon Linux 2023
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
 ```bash
