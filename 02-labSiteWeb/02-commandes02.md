@@ -1,5 +1,8 @@
+# Partie 1
 ```bash
 nano 1-setup_web_server.sh
+```
+```bash
 chmod +x 1-setup_web_server.sh
 sh 1-setup_web_server.sh
 ```
@@ -100,6 +103,7 @@ echo "Script terminé."
 ```
 
 ----
+# Partie 2
 
 ```bash
 nano 2-setup_database.sh
@@ -285,6 +289,8 @@ En suivant ces étapes, le script de création de la base de données devrait s'
 
 
 ---------------
+
+# Annexes
 
 #  `main_setup.sh` 
 
