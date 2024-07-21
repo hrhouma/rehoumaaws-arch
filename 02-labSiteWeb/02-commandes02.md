@@ -241,9 +241,9 @@ CREATE TABLE order_item (
   product_id INT(3),
   quantity INT(2),
   amount DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (`order_number`, `order_item_number`),
-  FOREIGN KEY (`order_number`) REFERENCES orders (`order_number`),
-  FOREIGN KEY (`product_id`) REFERENCES product (`id`)
+  PRIMARY KEY (order_number, order_item_number),
+  FOREIGN KEY (order_number) REFERENCES orders (order_number),
+  FOREIGN KEY (product_id) REFERENCES product (id)
   );
 
 
