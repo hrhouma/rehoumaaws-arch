@@ -1,4 +1,8 @@
-Bien sûr, voici le script modifié pour inclure une pause à la fin afin de tester les différents projets, ainsi que l'appel du script `1-setup_web_server.sh`.
+```bash
+nano 1-setup_web_server.sh
+chmod +x 1-setup_web_server.sh
+sh 1-setup_web_server.sh
+```
 
 ### Contenu de `1-setup_web_server.sh`
 
@@ -106,6 +110,7 @@ Créez un autre script, par exemple `main_setup.sh`, qui appellera le script `1-
 Pour exécuter le script principal, rendez-le exécutable et lancez-le :
 
 ```bash
+nano main_setup.sh
 chmod +x main_setup.sh
 ./main_setup.sh
 ```
