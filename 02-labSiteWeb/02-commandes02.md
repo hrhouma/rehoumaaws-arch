@@ -113,7 +113,7 @@ sh 2-setup_database.sh
 
 
 
-### Contenu de `2-setup_database.sh`
+### Correction de `2-setup_database.sh`
 
 ```bash
 #!/bin/bash
@@ -237,7 +237,7 @@ INSERT INTO product (product_name, description, price, product_group, image_url)
 , ('Hot Chocolate', 'Rich and creamy, and made with real chocolate', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg')
 , ('Latte', 'Offered hot or cold and in various delicious flavors', 3.50, 2, 'images/Latte.jpg');
 
-/* Create ORDER table. */
+/* Create `order` table. */
 
 CREATE TABLE `order` (
   order_number INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -288,9 +288,6 @@ echo "Fin du script principal."
 # Fin du script principal
 echo "Script principal terminé."
 ```
-
-Avec ces modifications, le script `main_setup.sh` va maintenant appeler le script `1-setup_web_server.sh` suivi de `2-setup_database.sh`, en automatisant tout le processus de configuration du serveur et de la base de données.
-
 
 
 --------------
