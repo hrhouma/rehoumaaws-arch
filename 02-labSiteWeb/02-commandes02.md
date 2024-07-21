@@ -290,3 +290,56 @@ echo "Script principal terminé."
 ```
 
 Avec ces modifications, le script `main_setup.sh` va maintenant appeler le script `1-setup_web_server.sh` suivi de `2-setup_database.sh`, en automatisant tout le processus de configuration du serveur et de la base de données.
+
+
+
+--------------
+
+
+### Script de nettoyage : `cleanup.sh`
+
+```bash
+#!/bin/bash
+
+# Arrêter les services
+sudo systemctl stop httpd
+sudo systemctl stop mariadb
+
+# Supprimer les répertoires et fichiers créés
+sudo rm -rf /var/www/html/*
+sudo rm -rf ~/environment/setup.tar.gz ~/environment/db.tar.gz ~/environment/cafe.tar.gz
+sudo rm -rf ~/environment/setup ~/environment/db ~/environment/cafe
+
+# Supprimer les bases de données MariaDB
+sudo mysql -u root -pRe:Start!9 -e "DROP DATABASE IF EXISTS cafe_db;"
+sudo mysql -u root -pRe:Start!9 -e "DROP USER IF EXISTS 'root'@'%';"
+sudo mysql -u root -pRe:Start!9 -e "DROP USER IF EXISTS 'admin'@'%';"
+
+# Démarrer les services pour vérifier que tout a été supprimé
+sudo systemctl start httpd
+sudo systemctl start mariadb
+
+# Message de fin
+echo "Nettoyage terminé. Vous pouvez maintenant réexécuter les scripts."
+```
+
+### Exécution du script de nettoyage
+
+1. Enregistrez le script ci-dessus dans un fichier nommé `cleanup.sh`.
+2. Rendez le script exécutable et lancez-le :
+
+```bash
+chmod +x cleanup.sh
+./cleanup.sh
+```
+
+### Réexécution des scripts de configuration
+
+Après avoir nettoyé votre environnement, vous pouvez réexécuter les scripts de configuration :
+
+```bash
+chmod +x 1-setup_web_server.sh
+chmod +x 2-setup_database.sh
+./main_setup.sh
+```
+
