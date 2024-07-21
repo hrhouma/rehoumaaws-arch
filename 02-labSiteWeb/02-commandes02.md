@@ -115,63 +115,6 @@ sh 2-setup_database.sh
 
 
 
-### Script SQL mis à jour (`create-db.sql`)
-
-```sql
-/*
-Script de création de la base de données pour la base de données cafe
-*/
-DROP DATABASE IF EXISTS cafe_db;
-
-CREATE DATABASE cafe_db;
-
-USE cafe_db;
-
-/* Créer la table PRODUCT_GROUP. */
-
-CREATE TABLE product_group (
-  product_group_number INT(3) NOT NULL PRIMARY KEY,
-  product_group_name VARCHAR(25) NOT NULL DEFAULT ''
-  );
-
-/* Insérer les données d'initialisation dans la table PRODUCT_GROUP. */
-
-INSERT INTO product_group (product_group_number, product_group_name) VALUES
- (1, 'Pastries'),
- (2, 'Drinks');
-
-/* Créer la table PRODUCT. */
-
-CREATE TABLE product (
-  id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  product_name VARCHAR(40) NOT NULL DEFAULT '',
-  description VARCHAR(200) NOT NULL DEFAULT '',
-  price DECIMAL(10,2) NOT NULL DEFAULT 0.0,
-  product_group INT(2) NOT NULL DEFAULT 1,
-  image_url VARCHAR(256) DEFAULT 'images/default-image.jpg',
-  FOREIGN KEY (product_group) REFERENCES product_group (product_group_number)
-  );
-
-/* Créer la table orders. */
-
-
-
-/* Insérer les données d'initialisation dans la table PRODUCT. */
-
-INSERT INTO product (product_name, description, price, product_group, image_url) VALUES 
- ('Croissant', 'Fraîche, beurrée et moelleuse... Tout simplement délicieuse!', 1.50, 1, 'images/Croissants.jpg'), 
- ('Donut', 'Nous avons plus d''une demi-douzaine de saveurs!', 1.00, 1, 'images/Donuts.jpg'), 
- ('Cookie aux pépites de chocolat', 'Fait avec du chocolat suisse avec une touche de vanille de Madagascar', 2.50, 1, 'images/Chocolate-Chip-Cookies.jpg'), 
- ('Muffin', 'Banana bread, myrtille, canneberge ou pomme', 3.00, 1, 'images/Muffins.jpg'), 
- ('Tarte fraise-myrtille', 'Pleine du goût et de l''arôme de fruits frais', 3.50, 1, 'images/Strawberry-Blueberry-Tarts.jpg'), 
- ('Tarte aux fraises', 'Fait avec des fraises fraîches mûres et une délicieuse crème fouettée', 3.50, 1, 'images/Strawberry-Tarts.jpg'), 
- ('Café', 'Café noir fraîchement moulu ou café colombien mélangé', 3.00, 2, 'images/Coffee.jpg'), 
- ('Chocolat chaud', 'Riche et crémeux, fait avec du vrai chocolat', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg'), 
- ('Latte', 'Proposé chaud ou froid et dans diverses saveurs délicieuses', 3.50, 2, 'images/Latte.jpg');
-
-
-```
-
 ### Mise à jour du script `2-setup_database.sh`
 
 ```bash
