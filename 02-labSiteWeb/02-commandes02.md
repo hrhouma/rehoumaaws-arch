@@ -298,19 +298,19 @@ echo "Script principal terminé."
 ```bash
 #!/bin/bash
 
-# Arrêter les services
-sudo systemctl stop httpd
-sudo systemctl stop mariadb
-
 # Supprimer les répertoires et fichiers créés
 sudo rm -rf /var/www/html/*
 sudo rm -rf ~/environment/setup.tar.gz ~/environment/db.tar.gz ~/environment/cafe.tar.gz
 sudo rm -rf ~/environment/setup ~/environment/db ~/environment/cafe
 
 # Supprimer les bases de données MariaDB
-sudo mysql -u root -pRe:Start!9 -e "DROP DATABASE IF EXISTS cafe_db;"
-sudo mysql -u root -pRe:Start!9 -e "DROP USER IF EXISTS 'root'@'%';"
-sudo mysql -u root -pRe:Start!9 -e "DROP USER IF EXISTS 'admin'@'%';"
+sudo mysql -u root -p'Re:Start!9' -e "DROP DATABASE IF EXISTS cafe_db;"
+sudo mysql -u root -p'Re:Start!9' -e "DROP USER IF EXISTS 'root'@'%';"
+sudo mysql -u root -p'Re:Start!9' -e "DROP USER IF EXISTS 'admin'@'%';"
+
+# Arrêter les services
+sudo systemctl stop httpd
+sudo systemctl stop mariadb
 
 # Démarrer les services pour vérifier que tout a été supprimé
 sudo systemctl start httpd
