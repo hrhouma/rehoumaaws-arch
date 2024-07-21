@@ -111,6 +111,10 @@ sh 2-setup_database.sh
 ### Contenu de `2-setup_database.sh`
 🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇🥇
 
+
+
+### Contenu de `2-setup_database.sh`
+
 ```bash
 #!/bin/bash
 
@@ -125,7 +129,7 @@ wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/ILT-TF-200-ACACAD-20
 tar -zxvf db.tar.gz
 
 wget https://aws-tc-largeobjects.s3-us-west-2.amazonaws.com/ILT-TF-200-ACACAD-20-EN/mod4-challenge/cafe.tar.gz
-tar -zxvf cafe.tar.gz 
+tar -zxvf cafe.tar.gz
 
 # Déplacer les fichiers extraits vers le répertoire web
 sudo mv cafe /var/www/html/
@@ -284,29 +288,5 @@ echo "Fin du script principal."
 # Fin du script principal
 echo "Script principal terminé."
 ```
-
-
-----
-### Script principal pour appeler `1-setup_web_server.sh`
-
-Créez un autre script, par exemple `main_setup.sh`, qui appellera le script `1-setup_web_server.sh`.
-
-```bash
-#!/bin/bash
-
-# Appel du script de configuration
-./1-setup_web_server.sh
-./2-setup_database.sh
-```
-
-Pour exécuter le script principal, rendez-le exécutable et lancez-le :
-
-```bash
-nano main_setup.sh
-chmod +x main_setup.sh
-./main_setup.sh
-```
-
-Ainsi, `main_setup.sh` appelle `1-setup_web_server.sh`, et à la fin de ce dernier, une pause est incluse pour vous permettre de tester les différents projets avant de terminer le script.
 
 Avec ces modifications, le script `main_setup.sh` va maintenant appeler le script `1-setup_web_server.sh` suivi de `2-setup_database.sh`, en automatisant tout le processus de configuration du serveur et de la base de données.
