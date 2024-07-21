@@ -113,7 +113,7 @@ sh 2-setup_database.sh
 
 
 
-### Correction de `2-setup_database.sh`
+### `2-setup_database.sh`
 
 ```bash
 #!/bin/bash
@@ -140,23 +140,23 @@ chmod +x set-app-parameters.sh
 echo "
 #!/bin/bash
 #
-# Script to set the MariaDB root user password right after database installation.
-# and create an admin user.
+# Script pour définir le mot de passe root de MariaDB juste après l'installation de la base de données.
+# et créer un utilisateur admin.
 #
-# Check the set-root-password.log file after running it to verify successful execution.
+# Vérifiez le fichier set-root-password.log après l'exécution pour vérifier l'exécution réussie.
 #
 
 sudo mysql --verbose < sql/set-root-password.sql > set-root-password.log
 
 echo
-echo \"Set Root Password script completed.\"
-echo \"Please check the set-root-password.log file to verify successful execution.\"
+echo \"Le script de définition du mot de passe root est terminé.\"
+echo \"Veuillez vérifier le fichier set-root-password.log pour vérifier l'exécution réussie.\"
 echo
 " > ../db/set-root-password.sh
 
 echo "
 --
--- Creates a root user that can connect from any host and sets the password for all root users in MariaDB
+-- Crée un utilisateur root pouvant se connecter depuis n'importe quel hôte et définit le mot de passe pour tous les utilisateurs root dans MariaDB
 --
 USE mysql;
 
@@ -178,20 +178,20 @@ FLUSH PRIVILEGES;
 echo "
 #!/bin/bash
 #
-# Script to create and populate the cafe database.
-# Check the create-db.log file after running it to verify successful execution.
+# Script pour créer et peupler la base de données cafe.
+# Vérifiez le fichier create-db.log après l'exécution pour vérifier l'exécution réussie.
 #
 sudo mysql --user=admin --password=\"Re:Start!9\" --verbose < sql/create-db.sql > create-db.log
 
 echo
-echo \"Create Database script completed.\"
-echo \"Please check the create-db.log file to verify successful execution.\"
+echo \"Le script de création de la base de données est terminé.\"
+echo \"Veuillez vérifier le fichier create-db.log pour vérifier l'exécution réussie.\"
 echo
 " > ../db/create-db.sh
 
 echo "
 /*
-Database Creation Script for the cafe database
+Script de création de la base de données pour la base de données cafe
 */
 DROP DATABASE IF EXISTS cafe_db;
 
@@ -199,20 +199,20 @@ CREATE DATABASE cafe_db;
 
 USE cafe_db;
 
-/* Create PRODUCT_GROUP table. */
+/* Créer la table PRODUCT_GROUP. */
 
 CREATE TABLE product_group (
   product_group_number INT(3) NOT NULL PRIMARY KEY,
   product_group_name VARCHAR(25) NOT NULL DEFAULT ''
   );
 
-/* INSERT initialization data into the PRODUCT_GROUP table. */
+/* Insérer les données d'initialisation dans la table PRODUCT_GROUP. */
 
 INSERT INTO product_group (product_group_number, product_group_name) VALUES
  (1, 'Pastries')
 , (2, 'Drinks');
 
-/* Create PRODUCT table. */
+/* Créer la table PRODUCT. */
 
 CREATE TABLE product (
   id INT(3) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -224,38 +224,38 @@ CREATE TABLE product (
   FOREIGN KEY (product_group) REFERENCES product_group (product_group_number)
   );
 
-/* INSERT initialization data into the PRODUCT table. */
+/* Insérer les données d'initialisation dans la table PRODUCT. */
 
 INSERT INTO product (product_name, description, price, product_group, image_url) VALUES
- ('Croissant', 'Fresh, buttery and fluffy... Simply delicious!', 1.50, 1, 'images/Croissants.jpg')
-, ('Donut', 'We have more than half-a-dozen flavors!', 1.00, 1, 'images/Donuts.jpg')
-, ('Chocolate Chip Cookie', 'Made with Swiss chocolate with a touch of Madagascar vanilla', 2.50, 1, 'images/Chocolate-Chip-Cookies.jpg')
-, ('Muffin', 'Banana bread, blueberry, cranberry or apple', 3.00, 1, 'images/Muffins.jpg')
-, ('Strawberry Blueberry Tart', 'Bursting with the taste and aroma of fresh fruit', 3.50, 1, 'images/Strawberry-Blueberry-Tarts.jpg')
-, ('Strawberry Tart', 'Made with fresh ripe strawberries and a delicious whipped cream', 3.50, 1, 'images/Strawberry-Tarts.jpg')
-, ('Coffee', 'Freshly-ground black or blended Columbian coffee', 3.00, 2, 'images/Coffee.jpg')
-, ('Hot Chocolate', 'Rich and creamy, and made with real chocolate', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg')
-, ('Latte', 'Offered hot or cold and in various delicious flavors', 3.50, 2, 'images/Latte.jpg');
+ ('Croissant', 'Fraîche, beurrée et moelleuse... Tout simplement délicieuse!', 1.50, 1, 'images/Croissants.jpg')
+, ('Donut', 'Nous avons plus d'une demi-douzaine de saveurs!', 1.00, 1, 'images/Donuts.jpg')
+, ('Cookie aux pépites de chocolat', 'Fait avec du chocolat suisse avec une touche de vanille de Madagascar', 2.50, 1, 'images/Chocolate-Chip-Cookies.jpg')
+, ('Muffin', 'Banana bread, myrtille, canneberge ou pomme', 3.00, 1, 'images/Muffins.jpg')
+, ('Tarte fraise-myrtille', 'Pleine du goût et de l'arôme de fruits frais', 3.50, 1, 'images/Strawberry-Blueberry-Tarts.jpg')
+, ('Tarte aux fraises', 'Fait avec des fraises fraîches mûres et une délicieuse crème fouettée', 3.50, 1, 'images/Strawberry-Tarts.jpg')
+, ('Café', 'Café noir fraîchement moulu ou café colombien mélangé', 3.00, 2, 'images/Coffee.jpg')
+, ('Chocolat chaud', 'Riche et crémeux, fait avec du vrai chocolat', 3.00, 2, 'images/Cup-of-Hot-Chocolate.jpg')
+, ('Latte', 'Proposé chaud ou froid et dans diverses saveurs délicieuses', 3.50, 2, 'images/Latte.jpg');
 
-/* Create `order` table. */
+/* Créer la table `order`. */
 
 CREATE TABLE `order` (
-  order_number INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  order_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  amount DECIMAL(10,2) NOT NULL DEFAULT 0.0
+  \`order_number\` INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  \`order_date_time\` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  \`amount\` DECIMAL(10,2) NOT NULL DEFAULT 0.0
   );
 
-/* Create ORDER_ITEM table. */
+/* Créer la table ORDER_ITEM. */
 
 CREATE TABLE order_item (
-  order_number INT(5) NOT NULL,
-  order_item_number INT(5) NOT NULL,
-  product_id INT(3),
-  quantity INT(2),
-  amount DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (order_number, order_item_number),
-  FOREIGN KEY (order_number) REFERENCES `order` (order_number),
-  FOREIGN KEY (product_id) REFERENCES product (id)
+  \`order_number\` INT(5) NOT NULL,
+  \`order_item_number\` INT(5) NOT NULL,
+  \`product_id\` INT(3),
+  \`quantity\` INT(2),
+  \`amount\` DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (\`order_number\`, \`order_item_number\`),
+  FOREIGN KEY (\`order_number\`) REFERENCES \`order\` (\`order_number\`),
+  FOREIGN KEY (\`product_id\`) REFERENCES product (\`id\`)
   );
 " > ../db/sql/create-db.sql
 
@@ -267,6 +267,82 @@ sudo sh create-db.sh
 # Fin du script
 echo "Script de configuration de la base de données terminé."
 ```
+
+### Permissions et exécution
+
+Assurez-vous que le script est exécutable et exécutez-le :
+
+```bash
+chmod +x 2-setup_database.sh
+sh 2-setup_database.sh
+```
+
+### `main_setup.sh`
+
+```bash
+#!/bin/bash
+
+# Appel du script de configuration du serveur web
+./1-setup_web_server.sh
+
+# Appel du script de configuration de la base de données
+./2-setup_database.sh
+
+# Pause finale pour tester les projets
+echo "Ajout d'une pause pour tester les projets ==> Adresse IP publique"
+echo "Testez et ensuite, appuyez sur une touche pour terminer..."
+read -n 1 -s -r -p " "
+echo "Fin du script principal."
+
+# Fin du script principal
+echo "Script principal terminé."
+```
+
+### `cleanup.sh`
+
+```bash
+#!/bin/bash
+
+# Supprimer les répertoires et fichiers créés
+sudo rm -rf /var/www/html/*
+sudo rm -rf ~/environment/setup.tar.gz ~/environment/db.tar.gz ~/environment/cafe.tar.gz
+sudo rm -rf ~/environment/setup ~/environment/db ~/environment/cafe
+
+# Supprimer les bases de données MariaDB
+sudo mysql -u root -p'Re:Start!9' -e "DROP DATABASE IF EXISTS cafe_db;"
+sudo mysql -u root -p'Re:Start!9' -e "DROP USER IF EXISTS 'root'@'%';"
+sudo mysql -u root -p'Re:Start!9' -e "DROP USER IF EXISTS 'admin'@'%';"
+
+# Arrêter les services
+sudo systemctl stop httpd
+sudo systemctl stop mariadb
+
+# Démarrer les services pour vérifier que tout a été supprimé
+sudo systemctl start httpd
+sudo systemctl start mariadb
+
+# Message de fin
+echo "Nettoyage terminé. Vous pouvez maintenant réexécuter les scripts."
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------
 
 ### Mise à jour du script `main_setup.sh` pour inclure le nouvel appel
 
