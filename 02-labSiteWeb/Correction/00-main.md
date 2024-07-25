@@ -1,5 +1,6 @@
 # Introduction
-Pour créer un script principal `main.sh` qui exécute les deux scripts `1-setup_web_server.sh` et `2-setup_database.sh` dans l'ordre, voici comment vous pouvez procéder :
+- Nous allons créer un script principal `main.sh` qui exécute les deux scripts `1-setup_web_server.sh` et `2-setup_database.sh` dans l'ordre.
+- Pour ce faire, voici comment vous pouvez procédé :
 
 1. Créez les deux scripts individuels `1-setup_web_server.sh` et `2-setup_database.sh`.
 2. Rendez-les exécutables avec la commande `chmod +x`.
