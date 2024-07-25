@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 # Mise à jour du système
 sudo yum update -y
@@ -115,3 +116,4 @@ echo "Fin du script."
 
 # Fin du script
 echo "Script terminé."
+```
