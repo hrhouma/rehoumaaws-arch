@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Naviguer vers le répertoire de l'environnement
@@ -155,27 +156,31 @@ sudo sh create-db.sh
 
 # Fin du script
 echo "Script de configuration de la base de données terminé."
-
-
+```
 
 # Annexes : autres commandes utiles
-
+```bash
 cd ../db/
 ./set-root-password.sh
 ./create-db.sh
+```
 
+```bash
 sudo mysql -u admin -p
 Re:Start!9
+```
 
+# DANS SQL 
 
-DANS SQL 
-
+```sql
 show databases;
 use cafe_db;
 show tables;
 select * from product;
 exit;
+```
 
-
+```bash
 sudo sed -i "2i date.timezone = \"America/New_York\" " /etc/php.ini
 sudo service httpd restart
+```
