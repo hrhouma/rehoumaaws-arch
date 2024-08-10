@@ -1,5 +1,6 @@
 # Étapes: 
 
+```plaintext
 +--------------------------+
 |      Créer un VPC         |
 |      CIDR: 10.0.0.0/16    |
@@ -44,8 +45,22 @@
 |  EC2 dans le sous-réseau  |
 |  public                   |
 +--------------------------+
+```
 
+### Étapes mises à jour :
 
+1. **Créer un VPC** avec une plage CIDR globale (par exemple, `10.0.0.0/16`).
+2. **Créer un sous-réseau public** (`10.0.0.0/24`) pour les ressources accessibles depuis Internet.
+3. **Créer un sous-réseau privé** (`10.0.2.0/23`) pour les ressources internes non accessibles depuis Internet.
+4. **Créer une passerelle Internet** (IGW) pour permettre l'accès Internet.
+5. **Attacher la passerelle Internet** au VPC.
+6. **Créer une table de routage publique** :
+   - Ajouter une route `0.0.0.0/0` pointant vers l'IGW.
+   - Associer cette table au sous-réseau public.
+7. **Créer une table de routage privée** :
+   - Assurer une route locale au sein du VPC (`10.0.0.0/16`).
+   - Associer cette table au sous-réseau privé.
+8. **Lancer une instance EC2** dans le sous-réseau public pour tester la connectivité.
 
 # Annexe : uniuqment publique simplifié
 
