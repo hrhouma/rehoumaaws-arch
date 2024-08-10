@@ -1,3 +1,53 @@
+# Étapes: 
+
++--------------------------+
+|      Créer un VPC         |
+|      CIDR: 10.0.0.0/16    |
++--------------------------+
+           |
+           |
++--------------------------+       +--------------------------+
+|  Créer un sous-réseau     |       |  Créer un sous-réseau     |
+|  Public (10.0.0.0/24)     |       |  Privé (10.0.2.0/23)      |
++--------------------------+       +--------------------------+
+           |                               |
+           |                               |
++--------------------------+       +--------------------------+
+|  Créer une passerelle     |       |  Créer une table de       |
+|  Internet (IGW)           |       |  routage privée           |
++--------------------------+       |  - Route locale vers      |
+           |                      |    le VPC (10.0.0.0/16)    |
+           |                      +--------------------------+
++--------------------------+
+|  Attacher la passerelle   |
+|  au VPC                   |
++--------------------------+
+           |
+           |
++--------------------------+
+|  Créer une table de       |
+|  routage publique         |
+|  - Route 0.0.0.0/0 vers   |
+|    IGW                    |
++--------------------------+
+           |
+           |
++--------------------------+       +--------------------------+
+|  Associer la table de     |       |  Associer la table de     |
+|  routage publique         |       |  routage privée           |
+|  au sous-réseau public    |       |  au sous-réseau privé     |
++--------------------------+       +--------------------------+
+           |
+           |
++--------------------------+
+|  Lancer une instance      |
+|  EC2 dans le sous-réseau  |
+|  public                   |
++--------------------------+
+
+
+
+# Annexe : uniuqment publique simplifié
 
 ```plaintext
 +--------------------------+
